@@ -1,8 +1,6 @@
 {
-  "name": "DotIL",
   "integrations": {
     "capacitor": {}
   },
-  "type": "angular",
-  "id": "ead24404"
+  "type": "angular"
 }
