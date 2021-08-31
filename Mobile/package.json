@@ -1,8 +1,8 @@
 {
-  "name": "MY NEW APP",
+  "name": "APK",
   "version": "1.0.0",
-  "description": "MY NEW APP",
-  "author": "Yaron Koresh",
+  "description": "APK",
+  "author": "Someone",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
