@@ -1,6 +1,10 @@
 * Create webpages as functions, inside app.tsx - similar to "Home()"
 * Assign path to each page, inside app.tsx - change "App()"
 * Edit icon & favicon with picture manipulation software (GIMP|Windows-Paint|etc...)
-* Import it to "Snacks", inside expo.dev
-* fix any problem (use the automatic fixes of the "panel", when possible)
-* build it into the stores
+* Upload into "Snacks"i (inside expo.dev), any needed file (do not upload these scripts: "app.json"/"WSL.ps1"/"expo-cli_install.bat"/"android.bat"/"ios.bat")
+* Fix any problem (use the automatic fixes of the "panel", when possible)
+* Install NodeJS (nodejs.org/en/download)
+* install expo command line interface (expo-cli_install.bat)
+* Enable WSL (WSL.ps1 - run as administrator)
+* Update all the "...", inside app.json, in relation to your apk properties
+* Build & publish it into the stores (android.bat/ios.bat)
