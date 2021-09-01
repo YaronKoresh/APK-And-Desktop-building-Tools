@@ -1,0 +1,16 @@
+{
+   "expo": {
+    "name": "...",
+    "icon": "./public/assets/icon.png",
+    "version": "1.0.0",
+    "slug": "expo.dev/@.../...",
+    "ios": {
+      "bundleIdentifier": "...",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "...",
+      "versionCode": 1
+    }
+   }
+ }
