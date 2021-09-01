@@ -8,117 +8,113 @@ import { CircularSlider } from 'react-native-elements-universe';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 function Giselle(arg) {
-	try {
-		function DegreeUp() {
-			parametersDegree++;
-			code[i] += '(';
-		}
-		function DegreeDown() {
-			parametersDegree--;
-			code[i] += ')';
-		}
-		function Dependent(arg1, arg2, arg3) {
-			if (arg1) {
-				if (arg2 == /^\*/) {
-					theDev = false;
-					throw new Error('Error in line ' + (i + 1) + ': ' + arg2.toString().substring(1) + '.');
-				} else {
-					return arg2;
-				}
-			} else {
-				if (arg3 == /^\*/) {
-					theDev = false;
-					throw new Error('Error in line ' + (i + 1) + ': ' + arg3.toString().substring(1) + '.');
-				} else {
-					return arg3;
-				}
-			}
-		}
-		function Looper(arg) {
-			var l = Math.Random();
-			if (typeof arg == 'number') {
-				return 'for (var _' + l + ' = 0 ; _' + l + ' < ' + arg + ' ; _' + l + '++){';
-			} else {
-				return 'while (' + arg + '){';
-			}
-			currentScope++;
-		}
-		function Giselle(arg1, arg2, arg3, arg4, arg5) {
-			if (typeof arg5 == 'undefined') {
-				arg5 = '++';
-			}
-			if (currentMode == 'operation') {
-				if (arg1 == /^\*/) {
-					theDev = false;
-					throw new Error('Error in line ' + (i + 1) + ': ' + arg1.toString().substring(1) + '.');
-				} else {
-					if (arg5.substring(1) == '+') {
-						code[i] += ' ' + arg1.toString();
-					} else if (arg5.substring(1) == '-') {
-						code[i] += arg1.toString();
-					}
-				}
-			} else if (currentMode == 'operand') {
-				if (arg2 == /^\*/) {
-					theDev = false;
-					throw new Error('Error in line ' + (i + 1) + ': ' + arg2.toString().substring(1) + '.');
-				} else {
-					if (arg5.substring(0, 1) == '+') {
-						code[i] += ',' + arg1.toString();
-					} else if (arg5.substring(0, 1) == '-') {
-						code[i] += '+' + arg1.toString();
-					}
-				}
-			}
-			if (arg3 != 2) {
-				currentMode = innerModes[arg3];
-			}
-			currentScope += arg4;
-		}
-		var inter = 'Internal Error: Please report a bug to the developer, with the following details: ';
-		var currentScope = 0;
-		var parametersDegree = 0;
-		var code;
-		var innerModes = [
-			'operand',
-			'operation'
-		];
-		var currentMode = '';
-		var lastWord = '';
-		var words = [];
-		var nextWord = '';
-		var lastWord = '';
-		var word = '';
-		var found = false;
-		var regOpen = '(';
-		var regOr = '|';
-		var regCloseAny = '){0,}';
-		var regCloseOne = '){1}';
-		var regCloseOneOrZero = '){0,1}';
-		var regCloseOneOrMore = '){1,}';
-		var regAnySpace = '' + regOpen + regOpen + ' ' + regOr + '\t' + regCloseOne + regCloseAny;
-		var regSpace = '' + regOpen + regOpen + ' ' + regOr + '\t' + regCloseOne + regCloseOneOrMore;
-		var regVariableName = '' + regOpen + regAnySpace + regOpen + '[a-zA-Z_]' + regCloseOne + regOpen + '[a-zA-Z0-9_]' + regCloseAny + regAnySpace + regCloseOne;
-		var regLoop = '' + regOpen + regAnySpace + 'loop' + regCloseOne + regOpen + regSpace + regOpen + '[0-9]' + regCloseOneOrMore + regOpen + regSpace + 'times' + regCloseOne + regAnySpace + regCloseOneOrZero;
-		var regCommands = '' + regOpen + regAnySpace + regOpen + regOpen + 'say' + regCloseOne + regOr + regOpen + 'break' + regCloseOne + regOr + regOpen + 'closed' + regCloseOne + regOr + regOpen + regLoop + regCloseOne + regCloseOne + regAnySpace + regCloseOne;
-		var regBy = '' + regOpen + regAnySpace + 'by' + regSpace + regOpen + '[a-zA-Z]' + regCloseOneOrMore + regAnySpace + regCloseOne;
-		var regKeys = '' + regOpen + regAnySpace + regOpen + 'window' + regCloseOneOrZero + regOpen + 'current' + regCloseOneOrZero + regOpen + 'empty' + regCloseOneOrZero + regOpen + 'newline' + regCloseOneOrZero + regAnySpace + regCloseOne;
-		var regText = '' + regOpen + regOpen + regAnySpace + 'text' + regCloseOne + regOpen + regSpace + regOpen + '[^ \f\n\r\t\x0B\xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000\uFEFF]' + regCloseOneOrMore + regCloseOneOrMore + regSpace + regOpen + regAnySpace + 'as' + regCloseOne + regSpace + regOpen + 'one' + regOr + 'some' + regOr + 'number' + regOr + 'boolean' + regOr + 'object' + regCloseOne + regAnySpace + regCloseOneOrMore;
-		var regStorage = '' + regOpen + regAnySpace + regVariableName + regOpen + regSpace + 'will' + regSpace + regOpen + 'store' + regOr + 'gain' + regOr + 'lose' + regOr + 'do' + regCloseOne + regCloseOne + regOr + regOpen + regSpace + 'is' + regSpace + regOpen + 'like' + regOr + 'not' + regCloseOne + regCloseOne + regAnySpace + regCloseOne;
-		var regData = '' + regOpen + regBy + regOr + regText + regOr + regKeys + regCloseOne;
-		var regFullCommand = '' + regOpen + regCommands + regOr + regData + regCloseOneOrMore;
-		var regFullStorage = '' + regOpen + regStorage + regOr + regData + regCloseOneOrMore;
-		var regNext = '' + regOpen + regAnySpace + regOpen + 'also' + regOr + 'with' + regOr + 'without' + regCloseOne + regAnySpace + regCloseOne;
-		var regAssignment = '' + regOpen + regAnySpace + regFullStorage + regAnySpace + regOpen + regSpace + regFullCommand + regOpen + regAnySpace + regNext + regAnySpace + regFullCommand + regCloseAny + regCloseOneOrZero + regAnySpace + regCloseOne;
-		var regActivity = '' + regOpen + regAnySpace + regFullCommand + regAnySpace + regCloseOne;
-		var regTester = '' + regOpen + regAnySpace + regAssignment + regOr + regActivity + regAnySpace + regCloseOne;
-		var reg = new RegExp('^' + regTester + '$');
-	} catch (exception) {
-		alert(inter + exception.message);
+	function DegreeUp() {
+		parametersDegree++;
+		code[i] += '(';
 	}
-	try {
-		var theDev = false;
-		var lines = arg.replaceAll('\n\n', '').replaceAll(/^\n/g, '').replaceAll(/\n$/g, '').split('\n');
+	function DegreeDown() {
+		parametersDegree--;
+		code[i] += ')';
+	}
+	function Dependent(arg1, arg2, arg3) {
+		if (arg1) {
+			if (arg2 == /^\*/) {
+				theDev = false;
+				throw new Error('Error in line ' + (i + 1) + ': ' + arg2.toString().substring(1) + '.');
+			} else {
+				return arg2;
+			}
+		} else {
+			if (arg3 == /^\*/) {
+				theDev = false;
+				throw new Error('Error in line ' + (i + 1) + ': ' + arg3.toString().substring(1) + '.');
+			} else {
+				return arg3;
+			}
+		}
+	}
+	function Looper(arg) {
+		var l = Math.Random();
+		if (typeof arg == 'number') {
+			return 'for (var _' + l + ' = 0 ; _' + l + ' < ' + arg + ' ; _' + l + '++){';
+		} else {
+			return 'while (' + arg + '){';
+		}
+		currentScope++;
+	}
+	function Giselle(arg1, arg2, arg3, arg4, arg5) {
+		if (typeof arg5 == 'undefined') {
+			arg5 = '++';
+		}
+		if (currentMode == 'operation') {
+			if (arg1 == /^\*/) {
+				theDev = false;
+				throw new Error('Error in line ' + (i + 1) + ': ' + arg1.toString().substring(1) + '.');
+			} else {
+				if (arg5.substring(1) == '+') {
+					code[i] += ' ' + arg1.toString();
+				} else if (arg5.substring(1) == '-') {
+					code[i] += arg1.toString();
+				}
+			}
+		} else if (currentMode == 'operand') {
+			if (arg2 == /^\*/) {
+				theDev = false;
+				throw new Error('Error in line ' + (i + 1) + ': ' + arg2.toString().substring(1) + '.');
+			} else {
+				if (arg5.substring(0, 1) == '+') {
+					code[i] += ',' + arg1.toString();
+				} else if (arg5.substring(0, 1) == '-') {
+					code[i] += '+' + arg1.toString();
+				}
+			}
+		}
+		if (arg3 != 2) {
+			currentMode = innerModes[arg3];
+		}
+		currentScope += arg4;
+	}
+	var inter = 'Internal Error: Please report a bug to the developer, with the following details: ';
+	var currentScope = 0;
+	var parametersDegree = 0;
+	var code;
+	var innerModes = [
+		'operand',
+		'operation'
+	];
+	var currentMode = '';
+	var lastWord = '';
+	var words = [];
+	var nextWord = '';
+	var lastWord = '';
+	var word = '';
+	var found = false;
+	var regOpen = '(';
+	var regOr = '|';
+	var regCloseAny = '){0,}';
+	var regCloseOne = '){1}';
+	var regCloseOneOrZero = '){0,1}';
+	var regCloseOneOrMore = '){1,}';
+	var regAnySpace = '' + regOpen + regOpen + ' ' + regOr + '\t' + regCloseOne + regCloseAny;
+	var regSpace = '' + regOpen + regOpen + ' ' + regOr + '\t' + regCloseOne + regCloseOneOrMore;
+	var regVariableName = '' + regOpen + regAnySpace + regOpen + '[a-zA-Z_]' + regCloseOne + regOpen + '[a-zA-Z0-9_]' + regCloseAny + regAnySpace + regCloseOne;
+	var regLoop = '' + regOpen + regAnySpace + 'loop' + regCloseOne + regOpen + regSpace + regOpen + '[0-9]' + regCloseOneOrMore + regOpen + regSpace + 'times' + regCloseOne + regAnySpace + regCloseOneOrZero;
+	var regCommands = '' + regOpen + regAnySpace + regOpen + regOpen + 'say' + regCloseOne + regOr + regOpen + 'break' + regCloseOne + regOr + regOpen + 'closed' + regCloseOne + regOr + regOpen + regLoop + regCloseOne + regCloseOne + regAnySpace + regCloseOne;
+	var regBy = '' + regOpen + regAnySpace + 'by' + regSpace + regOpen + '[a-zA-Z]' + regCloseOneOrMore + regAnySpace + regCloseOne;
+	var regKeys = '' + regOpen + regAnySpace + regOpen + 'window' + regCloseOneOrZero + regOpen + 'current' + regCloseOneOrZero + regOpen + 'empty' + regCloseOneOrZero + regOpen + 'newline' + regCloseOneOrZero + regAnySpace + regCloseOne;
+	var regText = '' + regOpen + regOpen + regAnySpace + 'text' + regCloseOne + regOpen + regSpace + regOpen + '[^ \f\n\r\t\x0B\xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000\uFEFF]' + regCloseOneOrMore + regCloseOneOrMore + regSpace + regOpen + regAnySpace + 'as' + regCloseOne + regSpace + regOpen + 'one' + regOr + 'some' + regOr + 'number' + regOr + 'boolean' + regOr + 'object' + regCloseOne + regAnySpace + regCloseOneOrMore;
+	var regStorage = '' + regOpen + regAnySpace + regVariableName + regOpen + regSpace + 'will' + regSpace + regOpen + 'store' + regOr + 'gain' + regOr + 'lose' + regOr + 'do' + regCloseOne + regCloseOne + regOr + regOpen + regSpace + 'is' + regSpace + regOpen + 'like' + regOr + 'not' + regCloseOne + regCloseOne + regAnySpace + regCloseOne;
+	var regData = '' + regOpen + regBy + regOr + regText + regOr + regKeys + regCloseOne;
+	var regFullCommand = '' + regOpen + regCommands + regOr + regData + regCloseOneOrMore;
+	var regFullStorage = '' + regOpen + regStorage + regOr + regData + regCloseOneOrMore;
+	var regNext = '' + regOpen + regAnySpace + regOpen + 'also' + regOr + 'with' + regOr + 'without' + regCloseOne + regAnySpace + regCloseOne;
+	var regAssignment = '' + regOpen + regAnySpace + regFullStorage + regAnySpace + regOpen + regSpace + regFullCommand + regOpen + regAnySpace + regNext + regAnySpace + regFullCommand + regCloseAny + regCloseOneOrZero + regAnySpace + regCloseOne;
+	var regActivity = '' + regOpen + regAnySpace + regFullCommand + regAnySpace + regCloseOne;
+	var regTester = '' + regOpen + regAnySpace + regAssignment + regOr + regActivity + regAnySpace + regCloseOne;
+	var reg = new RegExp('^' + regTester + '$');
+  try {
+  	var theDev = false;
+	  var lines = arg.replaceAll('\n\n', '').replaceAll(/^\n/g, '').replaceAll(/\n$/g, '').split('\n');
 		for (var i = 0; i < lines.length; i++) {
 			theDev = true;
 			currentMode = innerModes[1];
