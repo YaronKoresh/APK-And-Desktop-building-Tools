@@ -1,5 +1,4 @@
 {
-  "name": "App",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
@@ -76,6 +75,5 @@
   },
   "devDependencies": {
     "@capacitor/cli": "3.2.0"
-  },
-  "description": "Made by Yaron Koresh"
+  }
 }
