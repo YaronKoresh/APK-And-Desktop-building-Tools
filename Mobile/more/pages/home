@@ -1,0 +1,30 @@
+import { Text, View, StyleSheet, ActivityIndicator, Animated } from 'react-native';
+import { Avatar, Badge, withBadge, BottomSheet, Button, ButtonGroup, Card, ListItem, CheckBox, Chip, Divider, FAB, Header, Image, Input, LinearProgress, Overlay, PricingCard, Rating, AirbnbRating, SearchBar, Slider, SocialIcon, SpeedDial, Switch, Tab, Tile, Tooltip, Icon } from 'react-native-elements';
+import CircularSlider from 'react-native-elements-universe';
+import '../functions/Giselle';
+import '../data/style';
+
+
+export default function Home() {
+	return (
+		<View style={css.out}>
+			<View style={css.fence}>
+				<View style={css.X50}>
+					<View style={css.Y70}>
+						<Text>&zwnj;</Text>
+					</View>
+					<View style={css.Y30}>
+						<View style={css.cell}>
+							<View style={css.lrc}>
+								<Text style={css.strong}>hey</Text>
+							</View>
+						</View>
+					</View>
+				</View>
+				<View style={css.X50}>
+					<Text>&zwnj;</Text>
+				</View>
+			</View>
+		</View>
+	)
+}
