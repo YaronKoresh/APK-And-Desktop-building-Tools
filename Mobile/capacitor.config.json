@@ -1,5 +1,5 @@
 {
-	"appId": "dev.yaron.koresh",
+	"appId": "dev.example.app",
 	"appName": "App",
 	"webDir": "build",
 	"bundledWebRuntime": false
