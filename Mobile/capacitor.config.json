@@ -1,0 +1,6 @@
+{
+	"appId": "dev.yaron.koresh",
+	"appName": "App",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}
