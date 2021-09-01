@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import react, { useState } from 'react';
+import { render } from '@testing-library/react';
+import 'react-dom';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Text, View, StyleSheet, ActivityIndicator, Animated } from 'react-native';
-import { Avatar, Badge, withBadge, BottomSheet, Button, ButtonGroup, Card, ListItem, CheckBox, Chip, Divider, FAB, Header, Image, Input, LinearProgress, Overlay, PricingCard, Rating, AirbnbRating, SearchBar, Slider, SocialIcon, SpeedDial, Switch, Tab, Tile, Tooltip } from 'react-native-elements';
-import { CircularSlider } from 'react-native-elements-universe';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { Avatar, Badge, withBadge, BottomSheet, Button, ButtonGroup, Card, ListItem, CheckBox, Chip, Divider, FAB, Header, Image, Input, LinearProgress, Overlay, PricingCard, Rating, AirbnbRating, SearchBar, Slider, SocialIcon, SpeedDial, Switch, Tab, Tile, Tooltip, Icon } from 'react-native-elements';
+import CircularSlider from 'react-native-elements-universe';
 
 function Giselle(arg) {
 	function DegreeUp() {
@@ -2028,3 +2029,8 @@ export default function App() {
 		</IonApp>
 	)
 }
+
+test('renders without crashing', () => {
+  const { baseElement } = render(<App />);
+  expect(baseElement).toBeDefined();
+});
