@@ -1,7 +1,7 @@
 * Create webpages as functions, inside app.tsx - similar to "Home()"
 * Assign path to each page, inside app.tsx - change "App()"
 * Edit icon & favicon with picture manipulation software (GIMP|Windows-Paint|etc...)
-* Upload into "Snacks" (inside expo.dev), any needed file (do not upload those PowerShell/Batch scripts)
+* Upload into "Snacks" (inside expo.dev), any needed file (do not upload "tools" folder)
 * Fix any problem (use the automatic fixes of the "panel", when possible)
 * Install NodeJS (nodejs.org/en/download)
 * install expo command line interface (expo-cli_install.bat)
