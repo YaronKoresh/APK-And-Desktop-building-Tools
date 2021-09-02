@@ -1,5 +1,5 @@
 * Create webpages as functions, inside app.tsx - similar to "Home" page
-* Assign path to each page, inside app.tsx - change "App()"
+* Assign path to each page, inside app.js - change "App()"
 * Edit icon & favicon with picture manipulation software (GIMP|Windows-Paint|etc...)
 * Upload into "Snacks" (inside expo.dev), any needed file (do not upload "tools" folder)
 * Fix any problem (use the automatic fixes of the "panel", when possible)
