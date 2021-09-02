@@ -18,9 +18,7 @@ export default function App() {
 					<Route path="/" exact={true}>
 						<Redirect to="/home" />
 					</Route>
-					<Route path="/home" exact={true}>
-						{Home()}
-					</Route>
+					<Route path="/home" exact={true} component={Home()} />
 				</IonRouterOutlet>
 			</IonReactRouter>
 		</IonApp>
