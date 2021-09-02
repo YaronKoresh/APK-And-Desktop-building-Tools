@@ -135,6 +135,7 @@ export default function Giselle(arg) {
 					(found == false) && (word == 'script') && (Giselle(Dependent('lastWord=="by"', 'currentScript', '*unknown command "script"'), '"script"', 2, 0, '-+')) && (found = true);
 					(found == false) && (word == 'document') && (Giselle(Dependent('lastWord=="by"', 'document', '*unknown command "document"'), '"document"', 2, 0, '-+')) && (found = true);
 					(found == false) && (word == 'window') && (Giselle('window', '"window"', 2, 0)) && (found = true);
+					(found == false) && (word == 'link') && (Giselle(Dependent('lastWord=="by"', 'open', '*unknown command "link"'), '"link"', 2, 0) && DegreeUp()) && (found = true);
 					(found == false) && (word == 'current') && (Giselle('this', '"this"', 2, 0, Dependent('lastWord=="by"', '-+', '++'))) && (found = true);
 					(found == false) && (word == 'newline') && (Giselle('*unknown command "newline"', '\n', 2, 0, '+-')) && (found = true);
 					(found == false) && (word == 'text') && (Giselle('[""', 'text', 0, 0)) && (found = true);
