@@ -10,8 +10,6 @@ import '@ionic/react/css/typography.css';
 
 import './more/pages/home';
 import './more/pages/code';
-import './more/pages/guide';
-import './more/pages/about';
 
 export default function App() {
 	return (
