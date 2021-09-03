@@ -22,6 +22,9 @@ export default function Home() {
 													window by link text /code as one
 												`)} />
 					</View>
+					<View style={css.Y5}>
+						<Text>&zwnj;</Text>
+					</View>
 				</View>
 				<View style={css.X5}>
 					<Text>&zwnj;</Text>
