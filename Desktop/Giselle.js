@@ -1,4 +1,4 @@
-default export function Giselle(allCode) {
+export default function Giselle(allCode) {
 	function DegreeUp() {
 		parametersDegree++;
 		code[i] += '(';
