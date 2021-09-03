@@ -1,7 +1,8 @@
 // imports
 
 import * as React from 'react';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Text, View, StyleSheet, ActivityIndicator, Animated } from 'react-native';
 import { Avatar, Badge, withBadge, BottomSheet, Button, ButtonGroup, Card, ListItem, CheckBox, Chip, Divider, FAB, Header, Image, Input, LinearProgress, Overlay, PricingCard, Rating, AirbnbRating, SearchBar, Slider, SocialIcon, SpeedDial, Switch, Tab, Tile, Tooltip, Icon } from 'react-native-elements';
 import CircularSlider from 'react-native-elements-universe';
@@ -2063,13 +2064,16 @@ const Code = () => {
 
 // path
 
+const Stack = createNativeStackNavigator();
+
 const App = () => {
-  return(
-    <Router>
-      <Route exact path="/" component={Home}/>,
-      <Route exact path="/home" component={Home}/>,
-      <Route exact path="/code" component={Code}/>
-    </Router>
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="home" component={Home} />
+        <Stack.Screen name="code" component={Code} />
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 };
 
