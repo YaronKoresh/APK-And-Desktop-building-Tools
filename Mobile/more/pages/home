@@ -9,19 +9,21 @@ export default function Home() {
 	return (
 		<View style={css.out}>
 			<View style={css.fence}>
-				<View style={css.X50}>
-					<View style={css.Y70}>
+				<View style={css.X5}>
+					<Text>&zwnj;</Text>
+				</View>
+				<View style={css.X90}>
+					<View style={css.Y5}>
 						<Text>&zwnj;</Text>
 					</View>
-					<View style={css.Y30}>
-						<View style={css.cell}>
-							<View style={css.lrc}>
-								<Text style={css.strong}>hey</Text>
-							</View>
-						</View>
+					<View style={css.Y90}>
+						<Button title='Code' raised='true' onPress={Giselle(`
+													say text It's time to code ~ ! ~ ! ~ ! as one
+													window by link text /code as one
+												`)} />
 					</View>
 				</View>
-				<View style={css.X50}>
+				<View style={css.X5}>
 					<Text>&zwnj;</Text>
 				</View>
 			</View>
