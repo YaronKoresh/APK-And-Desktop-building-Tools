@@ -143,7 +143,7 @@ default export function Giselle(allCode) {
 					(found == false) && (word == 'current') && (GiselleCalc('this', '"this"', 2, 0, Dependent('lastWord=="by"', '-+', '++'))) && (found = true);
 					(found == false) && (word == 'newline') && (GiselleCalc('*unknown command "newline"', '\n', 2, 0, '+-')) && (found = true);
 					(found == false) && (word == 'text') && (GiselleCalc('[""', 'text', 0, 0)) && (found = true);
-          (found == false) && (word == 'in') && (GiselleCalc('[', '\"in\"', 2, 0,'-+')) && (arrayNow = true) && (found = true);
+          				(found == false) && (word == 'in') && (GiselleCalc('[', '\"in\"', 2, 0,'-+')) && (arrayNow = true) && (found = true);
 					(found == false) && (word == 'as') && (GiselleCalc('*unknown command "as"', '', 1, 0)) && (found = true);
 					(found == false) && (word == 'one') && (GiselleCalc(Dependent('lastWord=="as"', '].join("")', '*unknown command "one"'), '"one"', 2, 0, '-+')) && (found = true);
 					(found == false) && (word == 'some') && (GiselleCalc(Dependent('lastWord=="as"', ']', '*unknown command "some"'), '"some"', 2, 0, '-+')) && (found = true);
