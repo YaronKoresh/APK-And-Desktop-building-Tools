@@ -2077,7 +2077,4 @@ const App = () => {
   )
 };
 
-export {c};
-export {Home};
-export {Code};
 export default App;
