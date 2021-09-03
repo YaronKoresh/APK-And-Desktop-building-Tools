@@ -9,4 +9,4 @@
 * Download your snack as a ZIP file & get from it the app.json
 * Build & publish it into the stores (android.bat/ios.bat)
 
-# The file "barcode.png" is for live preview of the code, Scan it using the app: "Expo Go"
+=> The file "barcode.png" is for live preview of the code, Scan it using the app: "Expo Go"
