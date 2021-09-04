@@ -103,7 +103,7 @@ export function Giselle(allCode) {
 	var regSpace = regOpen + regOpen + ' ' + regOr + '\t' + regCloseOne + regCloseOneOrMore;
 	var regVariableName = regOpen + regAnySpace + regOpen + '[a-zA-Z_]' + regCloseOne + regOpen + '[a-zA-Z0-9_]' + regCloseAny + regAnySpace + regCloseOne;
 	var regLoop = regOpen + regAnySpace + 'loop' + regCloseOne + regOpen + regSpace + regOpen + '[0-9]' + regCloseOneOrMore + regOr + regOpen + regVariableName + regCloseOne + regOpen + regSpace + 'times' + regCloseOne + regAnySpace + regCloseOneOrZero;
-  var regCommands = regOpen + regAnySpace + regOpen + regOpen + 'say' + regCloseOne + regOr + regOpen + 'sql' + regCloseOne + regOr + regOpen + 'break' + regCloseOne + regOr + regOpen + regLoop + regCloseOne + regCloseOne + regAnySpace + regCloseOne;
+	var regCommands = regOpen + regAnySpace + regOpen + regOpen + 'say' + regCloseOne + regOr + regOpen + 'sql' + regCloseOne + regOr + regOpen + 'break' + regCloseOne + regOr + regOpen + regLoop + regCloseOne + regCloseOne + regAnySpace + regCloseOne;
 	var regBy = regOpen + regAnySpace + 'by' + regSpace + regOpen + '[a-zA-Z]' + regCloseOneOrMore + regAnySpace + regCloseOne;
   var regKeys = regOpen + regAnySpace + regOpen + 'window' + regCloseOneOrZero + regOpen + 'current' + regCloseOneOrZero + regOpen + 'empty' + regCloseOneOrZero + regOpen + 'newline' + regCloseOneOrZero + regAnySpace + regCloseOne;
 	var regText = regOpen + regOpen + regAnySpace + 'text' + regCloseOne + regOpen + regSpace + regOpen + '[^ \f\n\r\t\x0B\xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000\uFEFF]' + regCloseOneOrMore + regCloseOneOrMore + regSpace + regOpen + regAnySpace + 'as' + regCloseOne + regSpace + regOpen + 'one' + regOr + 'some' + regOr + 'number' + regOr + 'boolean' + regOr + 'object' + regCloseOne + regAnySpace + regCloseOneOrMore;
@@ -119,7 +119,7 @@ export function Giselle(allCode) {
 	var reg = new RegExp('^' + regTester + '$');
   try {
   	var theDev = false;
-	  var lines = (allCode.replace('\n\n', '').replace(/^\n/, '').replace(/\n$/, '').split('\n')) || (window.document.currentScript.getAttribute("code").replace('\n\n', '').replace(/^\n/, '').replace(/\n$/, '').split('\n'));
+	(var lines = allCode.replace('\n\n', '').replace(/^\n/, '').replace(/\n$/, '').split('\n')) || (var lines = window.document.currentScript.getAttribute("code").replace('\n\n', '').replace(/^\n/, '').replace(/\n$/, '').split('\n'));
 		for (i = 0; i < lines.length; i++) {
 			theDev = true;
 			currentMode = innerModes[1];
@@ -154,13 +154,13 @@ export function Giselle(allCode) {
 					(found == false) && (word == 'current') && (GiselleCalc('this', '"this"', 2, 0, Dependent('lastWord=="by"', '-+', '++'))) && (found = true);
 					(found == false) && (word == 'newline') && (GiselleCalc('*unknown command "newline"', '\n', 2, 0, '+-')) && (found = true);
 					(found == false) && (word == 'text') && (GiselleCalc('[""', 'text', 0, 0)) && (found = true);
-          (found == false) && (word == 'in') && (GiselleCalc('[', '\"in\"', 2, 0,'-+')) && (arrayNow = true) && (found = true);
+          				(found == false) && (word == 'in') && (GiselleCalc('[', '\"in\"', 2, 0,'-+')) && (arrayNow = true) && (found = true);
 					(found == false) && (word == 'as') && (GiselleCalc('*unknown command "as"', '', 1, 0)) && (found = true);
 					(found == false) && (word == 'one') && (GiselleCalc(Dependent('lastWord=="as"', '].join("")', '*unknown command "one"'), '"one"', 2, 0, '-+')) && (found = true);
 					(found == false) && (word == 'some') && (GiselleCalc(Dependent('lastWord=="as"', ']', '*unknown command "some"'), '"some"', 2, 0, '-+')) && (found = true);
 					(found == false) && (word == 'number') && (GiselleCalc(Dependent('lastWord=="as"', '].forEach(_$D$A$T$A$_ => parseInt(_$D$A$T$A$_))', '*unknown command "number"'), '"number"', 2, 0, '-+')) && Dependent('arrayNow=="true"', 'code[i] += "]"','') && (arrayNow = false) && (found = true);
 					(found == false) && (word == 'boolean') && (GiselleCalc(Dependent('lastWord=="as"', '].forEach(_$D$A$T$A$_ => this === _$D$A$T$A$_)', '*unknown command "boolean"'), '"boolean"', 2, 0, '-+')) && (found = true);
-					(found == false) && (word == 'object') && (GiselleCalc(Dependent('lastWord=="as"', '].forEach(_$D$A$T$A$_ => Object(_$D$A$T$A$_))', '*unknown command "object"'), '"object"', 2, 0, '-+')) && (found = true);
+					(found == false) && (word == 'object') && (GiselleCalc(Dependent('lastWord=="as"', '].join("").forEach(_$D$A$T$A$_ => new Function(_$D$A$T$A$_))', '*unknown command "object"'), '"object"', 2, 0, '-+')) && (found = true);
 					(found == false) && (word == 'say') && (GiselleCalc('\"alert\"', '\"say\"', 2, 0) && DegreeUp()) && (found = true);
 					(found == false) && (word == 'with') && (GiselleCalc(')&&(', 'with', 2, 0)) && (found = true);
 					(found == false) && (word == 'without') && (GiselleCalc(')&&(_$I$F$_=true);(_$I$F$_==false)&&(', 'without', 2, 0)) && (found = true);
